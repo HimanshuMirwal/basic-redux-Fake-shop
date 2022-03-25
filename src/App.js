@@ -1,21 +1,40 @@
 import React from "react";
-import Header from "./Containers/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProductList from "./Containers/ProductList";
-import ProductDetail from "./Containers/ProductDetails";
+import HomePage from "./pages/User/homePage";
+import Cart from "./pages/User/cartPage";
+import Login from "./pages/LoginPage";
+import Register from "./pages/RegisterPage";
+import Detail from "./pages/User/productInfo";
+import Order from "./pages/User/Order";
+import AdminHome from "./pages/Admin/AdminHome";
+
 export default class App extends React.Component {
     render() {
         return (
-            <div className="App ">
+            <div className="App">
                 <Router>
-                    <Header />
                     <Switch>
-                        <Route path="/" exact component={ProductList} />
-                        <Route path="/product/:productId" component={ProductDetail} />
-                        <Route >404 Not Found!</Route>
+                        <Route path="/" exact ><ProtectedRoutes><HomePage/></ProtectedRoutes></Route>
+                        <Route path="/cart" ><ProtectedRoutes><Cart/></ProtectedRoutes></Route>
+                        <Route path="/detail/:id"><ProtectedRoutes><Detail/></ProtectedRoutes></Route>
+                        <Route path="/order"><ProtectedRoutes><Order/></ProtectedRoutes></Route>
+                        <Route path="/admin"><ProtectedRoutes><AdminHome/></ProtectedRoutes></Route>
+                        <Route path="/login" component={Login}/>
+                        <Route path="/register" component={Register}/>
                     </Switch>
                 </Router>
+                
             </div>
         )
     }
 } 
+
+// here children refer to the props of the route.
+
+export  const ProtectedRoutes = ({children})=>{
+    if(localStorage.getItem("CurrentUser")){
+        return children;
+    }else{
+       return <Login/>
+    }
+}
