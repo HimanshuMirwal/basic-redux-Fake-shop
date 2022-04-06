@@ -5,7 +5,7 @@ const Layout = (props) => {
     return (
         <>
             <Header />
-            <div className="content container">
+            <div className="container-fluid" style={{padding:"0px", overflow:"hidden"}}>
                 {props.children}
             </div>
             <Footer/>

@@ -6,8 +6,10 @@ import {FaCheck} from "react-icons/fa";
 const LocationTrack = (props) => {
     const product = props.product
     return (
-        <>
-            <strong style={{color:Colors.BlueDim}}>Location tracker</strong>
+        <div className="text-center">
+            <strong style={{color:Colors.primary}}>Location tracker</strong>
+            <div style={{overflowX:"scroll", color:Colors.Gray}}>
+
                                     <ul class="list-group list-group-horizontal text-center">
                                     {
                                         product.track.map((loc, idx)=>{
@@ -16,7 +18,8 @@ const LocationTrack = (props) => {
                                         })
                                     }
             </ul>
-        </>
+            </div>
+        </div>
     )
 }
 export default LocationTrack;

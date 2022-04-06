@@ -1,7 +1,10 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import "../styleSheets/LoginCss.css";
+import { FaJediOrder } from "react-icons/fa"
 import { Colors } from "../Colors";
+import { Form, Button, Row } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [Pass, setPass] = useState("");
@@ -13,40 +16,70 @@ const LoginPage = () => {
             )
             console.log(result);
             localStorage.setItem("CurrentUser", JSON.stringify(result));
-            alert("success");
+            localStorage.setItem("currentUserCredentials", JSON.stringify({ email: email, Pass: Pass }))
+            toast.success("Login Successfull")
             window.location.href = "/";
         } catch (err) {
-            alert("Error");
+            toast.error("Error while login, kindly check Email and Password.")
         }
-        alert(email + ' ' + Pass);
     }
     return (
-        <div className="Register_Row" style={{ background: `linear-gradient(-140deg, ${Colors.BlueLight} 60%, ${Colors.Light} 60%)`}}>
-            <div className="col-8 Register_Col-10">
-                <div className="Register-Heading">
-                    <text style={{ color: Colors.BlueDim }}>Login</text>
-                </div>
-                <div className="Register-image" >
-                    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_57TxAX.json" background="transparent" speed="1" style={{ width: "100%", height: "80%" }} loop autoplay></lottie-player>
-                </div>
-                <div className="Register-form ">
-
-                    <div className="Register-form-contents" style={{ margin: "20px 0" }}>
-                        <div class="form-group my-1">
-                            <label style={{ color: Colors.Black }}>Email address</label>
-                            <input onChange={(e) => setEmail(e.target.value)} type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                        </div>
-                        <div class="form-group my-1">
-                            <label style={{ color: Colors.Black }}>Password</label>
-                            <input onChange={(e) => setPass(e.target.value)} type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-                        </div>
-                        <button style={{ color: Colors.Light, backgroundColor: Colors.BlueDim, margin: "20px 0" }} onClick={() => onClickSubmit()} type="button" class="btn">Login</button>
-                        <a style={{ color: Colors.Black }} href="/register">Signup here</a>
-                    </div>
-
-                </div>
+        <Row>
+            <ToastContainer />
+            <div className="col-lg-4 col-md-5 col-10 m-auto my-5">
+            <div className="text-center">
+            <FaJediOrder size={50} color={Colors.primary} />
+            <h1 className="h3 mb-3 fw-normal" style = {{color:Colors.primary}}>Sign In to ShopClone</h1> 
             </div>
-        </div>
+                <Form>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label style = {{color:Colors.Gray}}>Email address</Form.Label>
+                        <Form.Control onChange={(e)=>setEmail(e.target.value)} value={email} type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted"  style = {{color:Colors.third}}>
+                            We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label style = {{color:Colors.Gray}}>Password</Form.Label>
+                        <Form.Control  onChange={(e)=>setPass(e.target.value)} value={Pass}  type="password" placeholder="Password" />
+                    </Form.Group>
+                    <div className="row d-flex  flex-direction-column justify-content-center align-items-center">
+                    <div className="col-5">
+                    <Button  
+                    style={{color:Colors.secondary,
+                     background:Colors.primary,
+                      border:"0px",
+                        paddingLeft:"25px",
+                        paddingRight:"25px",
+                        marginBottom:"25px",
+                        width:"100%"
+                    }} 
+                    onClick={()=>onClickSubmit()} type="button">
+                        Submit
+                    </Button>
+                    </div>
+                    <div className="row-cols-2 text-center d-flex ">
+                    <a href="http://localhost:3000/register">Signup Here</a>
+                    <a href="http://localhost:3000/forgot">Forgot Password</a>
+                    </div>
+                    
+                    </div>
+                    
+                </Form>
+            </div>
+        </Row>
+        /* <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_xbcftl35.json"  background="transparent"  speed="1"  style={{ width: "100%", height: "100%" }}  loop  autoplay></lottie-player> */
+
+        /* <lottie-player
+                            src="https://assets3.lottiefiles.com/packages/lf20_57TxAX.json"
+                            background="transparent"
+                            speed="1"
+                            style={{ width: "100%", height: "100%" }}
+                            loop autoplay
+                            className="img-fluid"
+                        ></lottie-player> */
+        /* </div> */
+
     )
 }
 export default LoginPage;

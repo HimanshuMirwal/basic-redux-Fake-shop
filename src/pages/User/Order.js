@@ -9,6 +9,8 @@ import { FaTag, FaCheck, FaClock } from "react-icons/fa"
 import { useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import LocationTrack from "../../components/LocationTrack";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const HomePage = () => {
     const [Products, SetProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -49,9 +51,10 @@ const HomePage = () => {
         console.log(newData);
         try {
             const data = await addDoc(collection(shopcloneDB, "OrderCancelRequest"), newData);
-            console.log("trydata")
             console.log(data);
+            toast.success("Your Request has been submitted.")
         } catch (Err) {
+            toast.success("Error occur while sending request, try after some time.")
             console.log(Err);
         }
     }
@@ -66,6 +69,7 @@ const HomePage = () => {
                 </div>
             ) : (
                 <div className="row mx-n2 mx-sm-n3 my-5">
+                    <ToastContainer/>
                     {
                         <div className="text-center">
                             <h4>{alert && "No order found"}</h4>
@@ -73,36 +77,39 @@ const HomePage = () => {
                     }
                     {
                         Products.length > -1 && Products.map((product, index) => {
-                            return <div className="container-fluid my-3" style={{ boxShadow: "rgba(0, 0, 0, 0.45) 0px 25px 20px -20px" }}>
+                            return <div className="col-lg-8 col-10 mx-auto my-5">
                                 <div className="row" >
                                     <div className="col-4">
-                                        <img src={product.product.image} height={"100px"} alt={product.product.title} />
+                                        <img src={product.product.image} 
+                                        style={{height:"100px"}}
+                                        className="img-thumbnail"
+                                        alt={product.product.title} />
                                     </div>
                                     <div className="col-8">
-                                        <h3 className="text-center" style={{ color: Colors.BlueDark }}>{product.product.title}</h3>
-                                        <h4 className="text-center "><FaTag size={30} style={{ color: Colors.Black }} /> {product.product.price}</h4>
+                                        <h3 className="text-center" style={{ color: Colors.primary }}>{product.product.title}</h3>
+                                        <h4 className="text-center "><FaTag size={30} style={{ color: Colors.Gray }} /> {product.product.price}</h4>
                                     </div>
                                 </div>
                                 <hr />
                                 <div className="row">
                                     <div className="col-12 text-center">
-                                        <strong>product Id  </strong>{product.product.id}
+                                        <strong style={{color:Colors.primary}}>product Id  </strong><span style={{color:Colors.Gray}}>{product.product.id}</span>
                                     </div>
                                     <div className="col-12 text-center">
-                                        <strong>order Id    </strong> {product.id}
+                                        <strong style={{color:Colors.primary}}>order Id    </strong><span style={{color:Colors.Gray}}> {product.id}</span>
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-6 text-center">
-                                        <h5 className="text-center" style={{ color: Colors.BlueDim }}>Receiver detail</h5>
+                                    <div className="col-6 text-center" style={{color:Colors.Gray}}>
+                                        <h5 className="text-center" style={{color:Colors.primary}}>Receiver detail</h5>
                                         <hr />
                                         <h6>Phone No. </h6><p>{product.DetailedAddress.ParcelReceiverPhoneNo}</p>
                                         <h6>Address </h6><p>{product.DetailedAddress.parcelAddress}</p>
                                         <h6>Area Pincode </h6><p>{product.DetailedAddress.parcelPinCode}</p>
                                         <h6>dispatched </h6><p>{product.dispatched ? <FaCheck size={30} color="green" values="yes" /> : <FaClock size={30} color="yellow" values="pending" />}</p>
                                     </div>
-                                    <div className="col-6 text-center">
-                                        <h5 className="text-center" style={{ color: Colors.BlueDim }}>Sender detail</h5>
+                                    <div className="col-6 text-center" style={{color:Colors.Gray}}>
+                                        <h5 className="text-center" style={{color:Colors.primary}}>Sender detail</h5>
                                         <hr />
                                         <h6>Sender Name</h6>
                                         <p>{product.UserName}</p>
@@ -111,14 +118,14 @@ const HomePage = () => {
                                     </div>
                                 </div>
                                 <div className="row my-3" >
-                                    <div className="col-8 m-auto"  style={{overflowX:"scroll"}}>
+                                    <div className="col-12 m-auto">
                                         {product.track.length>0 && <LocationTrack product={product} />}
                                     </div>
                                 </div>
-                                <div className="row my-3" style={{ color: Colors.Black }} >
+                                <div className="row my-1" style={{ color: Colors.Gray }} >
                                     <div className="col-12 text-center">
                                         {product.messages ? <>
-                                            <strong style={{ color: Colors.BlueDim }}>
+                                            <strong style={{ color: Colors.Gray }}>
                                                 Request cancelation response</strong>
                                             <br /> {product.messages}</> : ""}
                                     </div>

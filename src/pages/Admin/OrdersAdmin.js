@@ -4,7 +4,7 @@ import { getDocs, collection, deleteDoc, doc, where, query, setDoc } from "fireb
 import "../../styleSheets/homaPage.css";
 import { FaTag } from "react-icons/fa"
 import { useSelector } from "react-redux";
-import {Colors} from "../../Colors";
+import {Colors, Font} from "../../Colors";
 import LocationTrack from "../../components/LocationTrack";
 const OrdersAdmin = () => {
     const [Products, SetProducts] = useState([]);
@@ -104,6 +104,9 @@ const OrdersAdmin = () => {
     }
     return (
         <div className="row mx-n2 mx-sm-n3 my-5" style={{color:Colors.Black}}>
+            <div className="col-lg-6 col-10 m-auto">
+
+            
             <div className="form-group my-1">
                 <input value={SearchKey} onChange={(e) => {
                     setSearchKey(e.target.value);
@@ -132,23 +135,24 @@ const OrdersAdmin = () => {
                     <h4>{alert && "No order found"}</h4>
                 </div>
             }
+            </div>
             {Products.length > -1 &&
                 Products
                     .filter(obj => obj.product.title.toLowerCase().includes(SearchKey))
                     .filter(obj => obj.UserName.toLowerCase().includes(SearchName))
                     .filter(obj => obj.userId.toLowerCase().includes(SearchId))
                     .map(product => {
-                        return <div className="row my-2" style={{
-                            boxShadow: `0 0 20px 0  ${Colors.BlueDark}`,
-                            borderRadius: "10px",
-                        }}>
+                        return <div className="col-10 mx-auto my-5" style={{color:Colors.Gray, border:"1px solid "+Colors.Gray, borderRadius:"10px", fontFamily:Font}}>
+                            <div className="row">
                             <div className="col-12">
-                                <h3 className="text-center" style={{color:Colors.BlueDark}}>{product.product.title}</h3>
-                                <h4 className="text-center " style={{color:Colors.Black}}><FaTag size={30} className=" text-primary" /> {product.product.price}</h4>
+                                <h3 className="text-center" style={{color:Colors.primary}}>{product.product.title}</h3>
+                                <h4 className="text-center " style={{color:Colors.Gray}}><FaTag size={30} className=" text-primary" /> {product.product.price}</h4>
+                            </div>
                             </div>
                             <hr />
+                            <div className="col-12 d-flex flex-direction-row justify-content-center">
                             <div className="col-6 text-center">
-                                <h5 className="text-center" style={{color:Colors.BlueDim}}>Receiver detail</h5>
+                                <h5 className="text-center" style={{color:Colors.Primary}}>Receiver detail</h5>
                                 <h6>Phone No. </h6>{product.DetailedAddress.ParcelReceiverPhoneNo}
                                 <h6>Address </h6>{product.DetailedAddress.parcelAddress}
                                 <h6>Area Pincode </h6>{product.DetailedAddress.parcelPinCode}
@@ -156,11 +160,12 @@ const OrdersAdmin = () => {
 
                             </div>
                             <div className="col-6 text-center">
-                                <h5 className="text-center" style={{color:Colors.BlueDim}}>Sender detail</h5>
+                                <h5 className="text-center" style={{color:Colors.primary}}>Sender detail</h5>
                                 <h6>Sender Name</h6>
                                     <p>{product.UserName}</p>
                                 <h6>Sender Id</h6>
                                 <p>{product.userId}</p>
+                            </div>
                             </div>
                             <div style={{
                                 display: "flex",
@@ -175,7 +180,7 @@ const OrdersAdmin = () => {
                                 <button className="btn" onClick={() => {
                                     SendMail(product);
                                 }}
-                                style={{backgroundColor:Colors.BlueDim, color:Colors.Light}}
+                                style={{backgroundColor:Colors.Gray, color:Colors.secondary}}
                                 >dispatched</button>
                             </div>
                             <div className="row my-auto" >
@@ -198,7 +203,7 @@ const OrdersAdmin = () => {
                                         onClick={() => {
                                             OrderLocationInfo(product);
                                         }}
-                                        style={{backgroundColor:Colors.BlueLight, color:Colors.Light}}
+                                        style={{backgroundColor:Colors.primary, color:Colors.secondary}}
                                         >
                                         order Location
                                     </button>
@@ -207,7 +212,7 @@ const OrdersAdmin = () => {
                                     onChange={()=>{
                                         SetTrackReset(!trackReset)
                                         console.log("Now "+trackReset)
-                                    }}/><strong style={{color:Colors.BlueDark}}>Reset Track</strong>
+                                    }}/><strong style={{color:Colors.Gray}}>Reset Track</strong>
                                 </div>
 
                             </div>

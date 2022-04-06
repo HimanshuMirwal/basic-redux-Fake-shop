@@ -10,9 +10,10 @@ import { Button, Modal, Tabs, Tab } from "react-bootstrap";
 import OrdersAdmin from "./OrdersAdmin";
 import RequestToCancel from "./RequestToCancel";
 import { Colors } from "../../Colors";
+import { CategoryData } from "../Category";
 const AdminHome = () => {
     const [show, setShow] = useState(false);
-    const [key,setKey] = useState("Products")
+    const [key, setKey] = useState("Products")
     const [deleteClick, setDeleteClicked] = useState(false);
     const currentuser = JSON.parse(localStorage.getItem("CurrentUser"));
     const handleClose = () => setShow(false);
@@ -133,65 +134,69 @@ const AdminHome = () => {
             title: ""
         })
     }
-    if(currentuser.user.email!=="himanshumirwal@gmail.com"){
-        window.location.href="/";
+    if (currentuser.user.email !== "himanshumirwal@gmail.com") {
+        window.location.href = "/";
     }
     return (
-        
+
         <Layout>
             {Object.keys(Products).length === 0 ? (
                 <Loader />
             ) : (
 
                 <div className="row my-5">
-                    <Tabs 
-                    id="controlled-tab-example"
-                    activeKey={key}
-                    onSelect={(k) => setKey(k)}
-                    className="mb-3"                    
+                    <Tabs
+                        id="controlled-tab-example"
+                        activeKey={key}
+                        onSelect={(k) => setKey(k)}
+                        className="my-3 mx-5"
                     >
                         <Tab eventKey="Products" title="Products">
-                            <div className="row">
-                                <div className="col-6 ">
-                                    <div className="form-group">
-                                        <input value={searchKey} onChange={(e) => {
-                                            setSearchKey(e.target.value);
-                                        }} type="text" className="form-control" id="exampleInputPassword1" placeholder="search product" />
+                            <div className="row d-flex flex-direction-row justify-content-center">
+                                    <div className="col-5">
+                                        <div className="form-group">
+                                            <input value={searchKey} onChange={(e) => {
+                                                setSearchKey(e.target.value);
+                                            }} type="text" className="form-control" id="exampleInputPassword1" placeholder="search product" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-5">
-                                    <div class="form-group">
-                                        <select value={FilterKey} onChange={(e) => {
-                                            setFilterKey(e.target.value);
-                                        }} id="" name="" className="form-control">
-                                            <option value="">All</option>
-                                            <option value="men's clothing">men's clothing</option>
-                                            <option value="electronics">electronics</option>
-                                            <option value="women's clothing">women's clothing</option>
-                                            <option value="jewelery">jewelery</option>
-                                        </select>
+                                    <div className="col-4">
+                                        <div class="form-group">
+                                            <select value={FilterKey} onChange={(e) => {
+                                                setFilterKey(e.target.value);
+                                            }} id="" name="" className="form-control">
+                                                <option value="">All</option>
+                                                {
+                                                    CategoryData.map(data=>{
+                                                        return <option value={data}>{data}</option>
+                                                    })
+                                                }
+                            
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-1">
-                                    <div class="form-group">
-                                        <button onClick={() => {
-                                            handleShow();
-                                            AddNewProduct();
+                                    <div className="col-lg-1 col-2">
+                                        <div class="form-group">
+                                            <button onClick={() => {
+                                                handleShow();
+                                                AddNewProduct();
 
-                                        }} className="btn btn-outline-secondary"><FaPlus /></button>
+                                            }} className="btn btn-outline-secondary"><FaPlus /></button>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                             {
                                 Products
-                                    .filter(obj =>obj.title.toLowerCase().includes(searchKey))
-                                    .filter(obj => obj.category.toLowerCase().includes(FilterKey)) 
+                                    .filter(obj => obj.title.toLowerCase().includes(searchKey))
+                                    .filter(obj => {
+                                            return FilterKey===""?obj.category.toLowerCase().includes(""):obj.category.toLowerCase()===FilterKey
+                                        })
                                     .map(product => {
                                         return (
-                                            <div className="row" style={{color:Colors.Black}}>
-                                                <div className="col-12">
+                                            <div style={{ color: Colors.Gray }}>
+                                                <div className="col-10 mx-auto">
                                                     <div className="row my-4">
-                                                        <h4 className="text-center" style={{color:Colors.BlueDark}}>{product.title}</h4>
+                                                        <h4 className="text-center" style={{ color: Colors.primary }}>{product.title}</h4>
                                                         <div className="col-2">
                                                             <img src={product.image} height="50hv" width="50vh" alt={product.title} />
                                                         </div>
@@ -216,7 +221,7 @@ const AdminHome = () => {
                                                             <button onClick={() => {
                                                                 EditInfo(product);
                                                                 handleShow();
-                                                            }} type="button" className="btn" style={{color:Colors.Light, background:Colors.Black}}>
+                                                            }} type="button" className="btn" style={{ color: Colors.secondary, background: Colors.Gray }}>
                                                                 <FaEdit size={20} />
                                                             </button>
                                                         </div>
@@ -276,10 +281,9 @@ const AdminHome = () => {
                                             }}
                                             value={EditProduct.category} className="form-control">
                                             <option value="">choose...</option>
-                                            <option value="men's clothing">men's clothing</option>
-                                            <option value="electronics">electronics</option>
-                                            <option value="women's clothing">women's clothing</option>
-                                            <option value="jewelery">jewelery</option>
+                                            {CategoryData.map(data=>{
+                                                return <option value={data}>{data}</option>
+                                            })}
                                         </select>
                                         <label className="col-form-label-sm">Image URL</label>
                                         <input
@@ -330,7 +334,7 @@ const AdminHome = () => {
                             </Modal>
                         </Tab>
                         <Tab eventKey="Orders" title="Orders">
-                            <OrdersAdmin/>
+                            <OrdersAdmin />
                         </Tab>
                         <Tab eventKey="OrderCancelRequest" title="OrderCancelRequest">
                             <RequestToCancel />

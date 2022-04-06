@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import shopcloneDB from "../../FirebaseConfig";
 import { REMOVE_TO_CART } from "../../redux/Actions/Action";
-
+import { Colors } from "../../Colors";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const TotalAndModal = (props) => {
     const [show, setShow] = useState(false);
     const Dispatch = useDispatch();
@@ -12,7 +14,10 @@ const TotalAndModal = (props) => {
     const [address, setAddress] = useState("");
     const [pinCode, setPinCode] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-
+    const [nameValid, setNameValid] = useState(false);
+    const [addressValid, setAddressValid] = useState(false);
+    const [pinCodeValid, setPinCodeValid] = useState(false);
+    const [phoneNumberValid, setPhoneNumberValid] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const { CartItems } = useSelector(state => state.CartReducer);
@@ -42,75 +47,115 @@ const TotalAndModal = (props) => {
             try{
                 const result = await addDoc(collection(shopcloneDB, "orders"), orderInfo);
                 console.log(result);
-                alert("order Successfully placed.");
+                toast.success("order Successfully placed.");
                 CartItems.forEach(item => {
                     Dispatch({type:REMOVE_TO_CART,payload:item.tempId})
                 });
             }catch(Err){
                 console.log(Err);
-                alert("Error while placing order.");
+                toast.error("Error while placing order.");
             }
         })
     }
     return (
         <div>
             <div className="row my-3">
-                <div className="col-12 text-center text-primary">
-                {props.total!==0 && <h5>Total : ${props.total}</h5>}
+                <div className="col-12 text-center" style={{ color: Colors.primary }}>
+                {props.total!==0 && <h5 style={{ color: Colors.Gray }}>Total : ${props.total}</h5>}
                 </div>
             </div>
             <div className="row my-3">
                 <div className="col-12 text-center">
                 {props.total===0 && <div className="text-center">
-                    <h2>Cart is empty</h2>
-                    <a href="/"><h4>Shop Now!</h4></a>
+                    <h2 style={{ color: Colors.primary }}>Cart is empty</h2>
+                    <a href="http://localhost:3000/" style={{ color: Colors.Gray }}><h4>Shop Now!</h4></a>
                 </div>}
-                    {props.total!==0 && <button className="btn btn-group-lg btn-info" onClick={handleShow}>
+                    {props.total!==0 && <button 
+                    className="btn btn-group-lg" 
+                    style={{ color: Colors.secondary, background:Colors.Gray }}
+                    onClick={handleShow}>
                         Place Order
                     </button>}
                 </div>
             </div>
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Address</Modal.Title>
+                <Modal.Header>
+                    <Modal.Title style={{ color: Colors.primary }}>Add Address</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input onChange={(e) => setName(e.target.value)} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" />
+                            <label for="exampleInputEmail1" style={{ color: Colors.Gray }}>Name</label>
+                            <input value={name} onChange={(e) => {
+                                setName(e.target.value)
+                                if(name.length >2){
+                                    setNameValid(true)
+                                }else{
+                                    setNameValid(false)
+                                }
+                                }} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" />
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Address</label>
-                            <textarea onChange={(e) => setAddress(e.target.value)}
+                            <label for="exampleInputPassword1" style={{ color: Colors.Gray }}>Address</label>
+                            <textarea value={address} onChange={(e) => {
+                                setAddress(e.target.value)
+                                const len = address.length;
+                                if( len>15){
+                                    setAddressValid(true)
+                                }else{
+                                    setAddressValid(false)
+                                }
+                                }}
                                 rows="5" cols="20" class="form-control" id="exampleInputPassword1"
-                                placeholder="enter address">
+                                placeholder="enter address Hno. gali no 0-C Azad Nagar yamuna nagar">
                             </textarea>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">pinCode</label>
-                            <input onChange={(e) => setPinCode(e.target.value)} type="number"
+                            <label for="exampleInputEmail1" style={{ color: Colors.Gray }}>pinCode</label>
+                            <input value={pinCode} onChange={(e) => {
+                                setPinCode(e.target.value)
+                                const len = pinCode.length;
+                                if( len >5 && pinCode!==0){
+                                    setPinCodeValid(true)
+                                }else{
+                                    setPinCodeValid(false)
+                                }
+                                }}
+                                 type="number"
                                 class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="Enter area Pincode" />
+                                placeholder="Enter area Pincode 135001" />
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">phoneNumber</label>
-                            <input onChange={(e) => setPhoneNumber(e.target.value)}
+                            <label for="exampleInputPassword1" style={{ color: Colors.Gray }}>phoneNumber</label>
+                            <input value={phoneNumber} onChange={(e) => {
+                                setPhoneNumber(e.target.value)
+                                const usernameRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+                            if (usernameRegex.test(phoneNumber)) {
+                                console.log("valid")
+                                setPhoneNumberValid(true)
+                            } else {
+                                console.log("!valid")
+                                setPhoneNumberValid(false)
+                            }
+                                }}
                                 type="number" class="form-control"
-                                id="exampleInputPassword1" placeholder="Enter Phone Number" />
+                                id="exampleInputPassword1" placeholder="Enter Phone Number +91xxxxxxxxxx" />
+                        {console.log("nameValid   phoneNumberValid   addressValid   pinCode ")}
+                    {console.log(nameValid +" "+  phoneNumberValid +" "+ addressValid +" "+ pinCodeValid)}
                         </div>
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button style={{ background: Colors.Gray, color:Colors.secondary,border:"0px" }} onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={() => {
+                    
+                    {(nameValid &&  phoneNumberValid && addressValid && pinCode ) &&<Button style={{ background: Colors.primary, color:Colors.secondary,border:"0px" }}  onClick={() => {
                         onClickSubmit()
                         handleClose()
                     }}>
                         Order
-                    </Button>
+                    </Button>}
                 </Modal.Footer>
             </Modal>
         </div>

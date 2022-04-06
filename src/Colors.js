@@ -1,7 +1,10 @@
 export  const Colors = {
-    BlueDark:"#051367",
-    BlueDim:"#2D31FA",
-    BlueLight:"#5D8Bf4",
-    Light:"#DFF6FF",
-    Black:"#0c0c0c"
+    red:"#C20000",
+    Gray:"#303030",
+    primary:"#ef9273",
+    secondary:"#ffff",
+    third:"#0d0d0d"
+}
+export const Font = {
+    fontFamily:"Open Sans",
 }

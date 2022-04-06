@@ -7,20 +7,24 @@ import Register from "./pages/RegisterPage";
 import Detail from "./pages/User/productInfo";
 import Order from "./pages/User/Order";
 import AdminHome from "./pages/Admin/AdminHome";
-
+import Forgot from "./pages/Forgot";
+import DisplayFeatures from "./pages/User/DisplayFeatures"
 export default class App extends React.Component {
     render() {
         return (
             <div className="App">
                 <Router>
                     <Switch>
-                        <Route path="/" exact ><ProtectedRoutes><HomePage/></ProtectedRoutes></Route>
+                        <Route path="/" exact ><DisplayFeatures/></Route>
+                        <Route path="/products/:category"  ><HomePage/></Route>
+                        <Route path="/detail/:id"><Detail/></Route>
                         <Route path="/cart" ><ProtectedRoutes><Cart/></ProtectedRoutes></Route>
-                        <Route path="/detail/:id"><ProtectedRoutes><Detail/></ProtectedRoutes></Route>
                         <Route path="/order"><ProtectedRoutes><Order/></ProtectedRoutes></Route>
                         <Route path="/admin"><ProtectedRoutes><AdminHome/></ProtectedRoutes></Route>
                         <Route path="/login" component={Login}/>
                         <Route path="/register" component={Register}/>
+                        <Route path="/forgot" component={Forgot}/>
+
                     </Switch>
                 </Router>
                 
