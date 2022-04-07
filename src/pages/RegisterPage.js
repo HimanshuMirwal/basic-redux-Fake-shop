@@ -9,22 +9,22 @@ import 'react-toastify/dist/ReactToastify.css';
 const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [Pass, setPass] = useState("");
-    const [Country, setCountry] = useState("")
-    const [displayName, setName] = useState("");
-    const [phoneNumber, setphoneNumber] = useState("")
+    // const [Country, setCountry] = useState("")
+    // const [displayName, setName] = useState("");
+    // const [phoneNumber, setphoneNumber] = useState("")
     const [EmailValid, setEmailValid] = useState(false);
-    const [NameValid, setNameValid] = useState(false);
-    const [PhoneValid, setPhoneValid] = useState(false);
+    // const [NameValid, setNameValid] = useState(false);
+    // const [PhoneValid, setPhoneValid] = useState(false);
     const [PassValid, setPassValid] = useState(false);
-    const [CountryValid, setCountryValid] = useState(false);
-    const options = useMemo(() => countryList().getData(), [])
+    // const [CountryValid, setCountryValid] = useState(false);
+    // const options = useMemo(() => countryList().getData(), [])
     const auth = getAuth();
     const onClickSubmit = async () => {
-        if (NameValid && EmailValid && PassValid && PhoneValid && CountryValid) {
+        if (EmailValid && PassValid ) {
 
             try {
                 const result = await createUserWithEmailAndPassword(auth,
-                    email, Pass, phoneNumber, displayName, Country
+                    email, Pass
                 )
                 console.log(result);
                 toast.success("success");
@@ -33,22 +33,13 @@ const RegisterPage = () => {
                 console.log(err);
             }
             setEmail("");
-            setName("")
             setPass("")
-            setphoneNumber("")
-            setCountry("")
         } else {
-            if (!NameValid) {
-                toast.error("Check your Name")
-            } else if (!EmailValid) {
+            if (!EmailValid) {
                 toast.error("Check your Email")
             } else if (!PassValid) {
                 toast.error("Check your Password")
-            } else if (!CountryValid) {
-                toast.error("Check your Country")
-            } else {
-                toast.error("Check your phone number")
-            }
+            } 
         }
 
     }
@@ -61,7 +52,7 @@ const RegisterPage = () => {
                     <h1 className="h3 mb-3 fw-normal" style={{ color: Colors.primary }}>Signup to ShopClone</h1>
                 </div>
                 <Form>
-                    <div className="form-group my-2" >
+                    {/* <div className="form-group my-2" >
                         <strong><label style={{ color: Colors.Gray }}>Name</label></strong>
                         <input value={displayName} onChange={(e) => {
                             setName(e.target.value)
@@ -73,7 +64,7 @@ const RegisterPage = () => {
                             }
                         }
                         } type="text" className="form-control" placeholder="Enter Name" />
-                    </div>
+                    </div> */}
                     <div className="form-group my-2">
                         <strong><label style={{ color: Colors.Gray }}>Email address</label></strong>
                         <input value={email}
@@ -87,7 +78,7 @@ const RegisterPage = () => {
                                 }
                             }} type="email" className="form-control" placeholder="Enter email" />
                     </div>
-                    <div className="form-group my-2">
+                    {/* <div className="form-group my-2">
                         <strong><label style={{ color: Colors.Gray }}>Phone Number</label></strong>
                         <input value={phoneNumber} onChange={(e) => {
                             setphoneNumber(e.target.value)
@@ -97,8 +88,8 @@ const RegisterPage = () => {
                                 setPhoneValid(false)
                             }
                         }} type="number" size={10} className="form-control" placeholder="Enter Phone number +91xxxxxxxxxx" />
-                    </div>
-                    <div className="form-group my-2">
+                    </div> */}
+                    {/* <div className="form-group my-2">
                         <strong><label style={{ color: Colors.Gray }}>Country</label></strong>
                         <select className="form-control" value={Country} onChange={(e) => {
                             setCountry(e.target.value)
@@ -114,7 +105,7 @@ const RegisterPage = () => {
                                 })
                             }
                         </select>
-                    </div>
+                    </div> */}
                     <div class="form-group my-2">
                         <strong><label style={{ color: Colors.Gray }}>Password</label></strong>
                         <input value={Pass} onChange={(e) => {
@@ -134,7 +125,7 @@ const RegisterPage = () => {
                     </label>
                     <div className="row d-flex  flex-direction-column justify-content-center align-items-center">
                         <div className="col-5">
-                            {console.log("email " + EmailValid + " PAssword " + PassValid + " Phone " + PhoneValid + " name " + NameValid + " Country " + CountryValid)}
+                            {/* {console.log("email " + EmailValid + " PAssword " + PassValid + " Phone " + PhoneValid + " name " + NameValid + " Country " + CountryValid)} */}
                             <Button
                                 style={{
                                     color: Colors.secondary,
