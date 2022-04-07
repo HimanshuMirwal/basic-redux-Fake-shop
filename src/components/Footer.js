@@ -27,10 +27,10 @@ const Footer = () => {
             <div className="widget widget-links widget-light pb-2 mb-4">
               <h3 className="widget-title" style={{color:Colors.Gray, fontWeight:"bold"}}>About us</h3>
               <ul className="widget-list" style={{listStyleType:"none", padding:0}}>
-                <li className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href="himanshumirwal.github.io/me">About company</a></li>
-                <li className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href="himanshumirwal.github.io/me">Our team</a></li>
-                <li className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href="himanshumirwal.github.io/me">Careers</a></li>
-                <li className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href="himanshumirwal.github.io/me">News</a></li>
+                <li className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href="https://himanshumirwal.github.io/me">About company</a></li>
+                <li className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href="https://himanshumirwal.github.io/me">Our team</a></li>
+                <li className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href="https://himanshumirwal.github.io/me">Careers</a></li>
+                <li className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href="https://himanshumirwal.github.io/me">News</a></li>
               </ul>
             </div>
           </div>
@@ -118,7 +118,7 @@ const Footer = () => {
           </div>
           <div className="pb-4 fs-xs opacity-50 text-center text-md-start" style={{color:Colors.Gray}}>
           © All rights reserved. Made by  
-          <a  href="himanshumirwal.github.io/me" className="mx-2" target="_blank" rel="noopener">
+          <a  href="https://himanshumirwal.github.io/me" className="mx-2" target="_blank" rel="noopener">
              Himanshu Mirwal</a></div>
         </div>
       </div>
