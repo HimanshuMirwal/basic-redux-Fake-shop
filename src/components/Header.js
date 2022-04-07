@@ -5,6 +5,7 @@ import { FaSignOutAlt, FaJediOrder, FaCartArrowDown } from "react-icons/fa";
 import { Colors, Font } from "../Colors";
 import ResetPass from "./ResetPass";
 import { AdminEmail } from "./Credentials";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Header = () => {
   const { CartItems } = useSelector(state => state.CartReducer);
@@ -12,8 +13,12 @@ const Header = () => {
   const email = user ? user.email : "";
   const displayName = user ? user.displayName : ""
   console.log(user)
+  if(user){
+    displayName?toast("Hii "+ displayName ):toast("Hii "+ email )
+  }
   return (
     <>
+      <ToastContainer/>
       <nav class="navbar navbar-expand-lg navbar-light  py-2 px-3 shadow-sm sticky-top"
         style={{ background: Colors.secondary }}>
         <div class="container-fluid">

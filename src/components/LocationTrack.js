@@ -1,6 +1,4 @@
 import React from "react";
-import { FaFacebook, FaInstagram, FaGooglePlus, FaTwitter, FaLinkedin, FaPinterest } from 'react-icons/fa';
-import "../styleSheets/Footer.css"
 import {Colors} from "../Colors";
 import {FaCheck} from "react-icons/fa";
 const LocationTrack = (props) => {
