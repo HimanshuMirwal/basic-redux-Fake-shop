@@ -11,7 +11,7 @@ const Footer = () => {
         }}>
       <div className="container">
         <div className="row pb-2">
-          <div className="col-md-4 col-sm-6">
+          <div className="col-lg-4 col-6">
             <div className="widget widget-links widget-light pb-2 mb-4">
               <h3 className="widget-title" style={{color:Colors.Gray, fontWeight:"bold"}}>Shop departments</h3>
               <ul className="widget-list" style={{listStyleType:"none", padding:0}}>
@@ -23,7 +23,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-md-4 col-sm-6">
+          <div className="col-lg-4 col-6">
             <div className="widget widget-links widget-light pb-2 mb-4">
               <h3 className="widget-title" style={{color:Colors.Gray, fontWeight:"bold"}}>About us</h3>
               <ul className="widget-list" style={{listStyleType:"none", padding:0}}>
@@ -34,7 +34,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-lg-4">
             <div className="widget pb-2 mb-4">
               <h3 className="widget-title pb-1" style={{color:Colors.Gray, fontWeight:"bold"}}>Stay informed</h3>
               <form className="subscription-form validate" action="mailto:himanshumirwal@gmail.com" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
@@ -55,7 +55,7 @@ const Footer = () => {
       <div className="pt-5 bg-darker">
         <div className="container">
           <div className="row pb-3">
-            <div className="col-md-3 col-sm-6 mb-4">
+            <div className="col-lg-4 col-6 mb-4">
               <div className="d-flex">
                 <FaRocket size={50}/>
                 <div className="ps-3">
@@ -64,7 +64,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-3 col-sm-6 mb-4">
+            <div className="col-lg-4 col-6 mb-4">
               <div className="d-flex">
                 <BsCurrencyExchange size={50}/>
                 <div className="ps-3">
@@ -73,7 +73,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-3 col-sm-6 mb-4">
+            <div className="col-lg-3 col-6 mb-4">
               <div className="d-flex">
                 <BiSupport size={50}/>
                 <div className="ps-3">
@@ -82,7 +82,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-3 col-sm-6 mb-4">
+            <div className="col-lg-3 col-6 mb-4">
               <div className="d-flex">
               <BsFillCreditCardFill size={50}/>
                 <div className="ps-3">
@@ -94,14 +94,14 @@ const Footer = () => {
           </div>
           <hr className="hr-light mb-5" />
           <div className="row pb-2">
-            <div className="col-md-6 text-center text-md-start mb-4">
+            <div className="col-lg-6 text-center text-md-start mb-4">
               <div className="text-nowrap mb-4">
               <a className="d-inline-block align-middle mt-n1 me-3" href="/">
                 <FaJediOrder size={100} style={{color:Colors.Gray}}/>
               </a>  
               </div>
             </div>
-            <div className="col-md-6 text-center text-md-end mb-4">
+            <div className="col-lg-6 text-center text-md-end mb-4">
               <div className="mb-3">
               <a className="btn-social bs-light bs-twitter ms-2 mb-2" href="/">
               <FaTwitter size={30} style={{color:Colors.Gray}}/></a>
@@ -118,7 +118,7 @@ const Footer = () => {
           </div>
           <div className="pb-4 fs-xs opacity-50 text-center text-md-start" style={{color:Colors.Gray}}>
           © All rights reserved. Made by  
-          <a  href="https://himanshumirwal.github.io/me" className="mx-2" target="_blank" rel="noopener">
+          <a  href="https://himanshumirwal.github.io/me" className="mx-2" target="_blank" rel="noreferrer">
              Himanshu Mirwal</a></div>
         </div>
       </div>
