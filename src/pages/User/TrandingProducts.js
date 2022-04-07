@@ -24,9 +24,9 @@ const TrandingProducts = (props) => {
         Dispatch({type:ADD_TO_CART, payload:newdata})
     }
     return (                    
-                        <div className="col-lg-3  col-sm-6 px-2 mb-0">
+                        <div className="col-lg-3  col-sm-6 px-2 mb-2">
                         <div className="card product-card">
-                            <a className="card-img-top d-block overflow-hidden" href="/">
+                            <a className="card-img-top d-block overflow-hidden" href={`https://shopclonehimanshu.herokuapp.com/detail/:${item.id.toLowerCase()}`}>
                             <div className="d-flex juystify-items-center align-items-center">
                             <img src={item.image} height="250px" width={"200px"} className="m-auto" alt="Product"/>
                             </div>
