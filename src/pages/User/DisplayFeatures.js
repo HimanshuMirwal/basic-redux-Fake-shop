@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Colors, Font } from "../../Colors";
 import Marquee from "react-fast-marquee";
 import Slider from "../../components/Slider";
-import { Card, Col, Row } from "react-bootstrap";
-import "../../styleSheets/DisplayFeatures.css"
+import { Row } from "react-bootstrap";
 import { Brands } from "../../BrandsImages/BrandImages"
 import { collection, getDocs, query, where } from "firebase/firestore";
 import shopCloneDB from "../../FirebaseConfig";
@@ -91,37 +90,33 @@ const DisplayFeatures = () => {
                 <div className="col-12">
                     <Slider images={images.map(img => img.image)} />
                 </div>
-                <div className="col-10 m-auto">
-                    <Row xs={1} md={2} className="g-4 my-5 mx-auto">
-                        {images.map((data, idx) => (
-                            <Col key={idx}>
-                                <Card>
-                                    <Card.Img variant="top" src={data.image} className="img-thumbnail" />
-                                    <Card.Body>
-                                        <Card.Title
-                                            style={{
+                <div className="col-10 mx-auto my-2">
+                    <div class="row">
+                    {images.map((data, idx) => (
+                        <div class="col-lg-6 col-12 my-2" key={idx}>
+                            <div class="card">
+                                <img alt={idx} class="card-img-top img-thumbnail" src={data.image}/>
+                                <div class="card-body">
+                                    <h5 class="card-title"  style={{
                                                 fontWeight: "bold",
                                                 fontSize: "30px"
                                             }}><a
-                                                href={`http://localhost:3000/products/${data.title.toLowerCase()}`}
+                                                href={`https://shopclonehimanshu.herokuapp.com/products/${data.title.toLowerCase()}`}
                                                 style={{
                                                     textDecoration: "none",
                                                     color: Colors.primary,
                                                     fontFamily: Font
-                                                }}>{data.title}</a></Card.Title>
-                                        <Card.Text style={{
+                                                }}>{data.title}</a></h5>
+                                    <p class="card-text" style={{
                                             color: Colors.Gray,
                                             fontFamily: Font,
                                             fontSize: "15px"
                                         }}>
-                                            {data.description}
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row>
-
+                                            {data.description}</p>
+                                </div>
+                            </div>
+                        </div>))}
+                    </div>
                 </div>
                 <Row className="my-5">
                     <div className="col-12">
@@ -133,15 +128,15 @@ const DisplayFeatures = () => {
                     </div>
                 </Row>
 
-                <Row style={{ margin: 0, padding: "20px" }}>
+                <div className="row" style={{ margin: 0, padding: "20px" }}>
                     <div
                         style={{ background: Colors.primary, color: Colors.secondary }}
-                        className=" col-md-3 col-10 rounded TrendingHeading text-center  d-flex justify-content-center align-items-center">
+                        className="col-lg-3 col-12 text-center d-flex justify-content-center align-items-center">
                         <h1 style={{
                             fontFamily: Font
                         }}>Trending Men's Wear</h1>
                     </div>
-                    <div className="col-md-9 col-12 m-auto">
+                    <div className="col-lg-9 col-10 m-auto">
                         <div className="d-flex flex-direction-row overflow-scroll">
                             {
                                 suggestion.map((item, index) => {
@@ -150,10 +145,10 @@ const DisplayFeatures = () => {
                             }
                         </div>
                     </div>
-                </Row>
+                </div>
                 <div className="text-center pt-3">
                     <a className="btn"
-                        href={"http://localhost:3000/products/women's clothing"}
+                        href={"https://shopclonehimanshu.herokuapp.com/products/women's clothing"}
                         style={{ color: Colors.Light, background: Colors.primary, fontFamily: Font }}
                     >
                         More products <FaArrowRight size={25} /></a>
@@ -173,7 +168,7 @@ const DisplayFeatures = () => {
                     </div>
                     <div className="col-10 overflow-scroll">
                         {CategoryData.map(item => {
-                            return <a href={`http://localhost:3000/products/${item.toLowerCase()}`}><div
+                            return <a href={`https://shopclonehimanshu.herokuapp.com/products/${item.toLowerCase()}`}><div
                                 className="text-center rounded-pill m-2 p-2"
                                 style={{
                                     background: Colors.primary,
@@ -190,12 +185,12 @@ const DisplayFeatures = () => {
                 <Row style={{ margin: 0, padding: "20px" }}>
                     <div
                         style={{ background: Colors.primary, color: Colors.secondary }}
-                        className=" col-md-3 col-10 rounded  TrendingHeading  text-center  d-flex justify-content-center align-items-center">
+                        className="col-lg-3 col-12 text-center d-flex justify-content-center align-items-center">
                         <h1 style={{
                             fontFamily: Font
                         }}>Trending Men's Wear</h1>
                     </div>
-                    <div className="col-md-9 col-12 m-auto">
+                    <div className="col-md-9 col-10 m-auto">
                         <div className="d-flex flex-direction-row overflow-scroll">
                             {
                                 suggestionShoes.map((item, index) => {
@@ -208,7 +203,7 @@ const DisplayFeatures = () => {
                 </Row>
                 <div className="text-center pt-3">
                     <a className="btn"
-                        href={"http://localhost:3000/products/men's clothing"}
+                        href={"https://shopclonehimanshu.herokuapp.com/products/men's clothing"}
                         style={{ color: Colors.Light, background: Colors.primary, fontFamily: Font }}
                     >
                         More products <FaArrowRight size={25} /></a>
@@ -234,11 +229,11 @@ const DisplayFeatures = () => {
                                     if (index === 3) {
                                         return <></>
                                     }
-                                    return <div className="col-12 col-md-4 my-3" key={index}>
+                                    return <div className="col-12 col-lg-4 my-3" key={index}>
 
                                         <div className="card mb-7 shadow shadow-hover lift">
 
-                                            <a href="blog-post.html">
+                                            <a href="https://himanshumirwal.github.io/me">
                                                 <img src={item.image} alt="..." className="card-img-top" />
                                             </a>
 
@@ -266,7 +261,7 @@ const DisplayFeatures = () => {
                                 <button
                                     style={{ background: Colors.primary, color: Colors.secondary }}
                                     className="btn"
-                                    onClick={() => window.location.href = "http://localhost:3000/products/all"}
+                                    onClick={() => window.location.href = "https://shopclonehimanshu.herokuapp.com/products/all"}
                                 >
                                     See Our All Products
                                 </button>

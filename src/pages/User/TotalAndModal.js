@@ -68,7 +68,7 @@ const TotalAndModal = (props) => {
                 <div className="col-12 text-center">
                 {props.total===0 && <div className="text-center">
                     <h2 style={{ color: Colors.primary }}>Cart is empty</h2>
-                    <a href="http://localhost:3000/" style={{ color: Colors.Gray }}><h4>Shop Now!</h4></a>
+                    <a href="https://shopclonehimanshu.herokuapp.com/" style={{ color: Colors.Gray }}><h4>Shop Now!</h4></a>
                 </div>}
                     {props.total!==0 && <button 
                     className="btn btn-group-lg" 

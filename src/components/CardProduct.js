@@ -48,7 +48,7 @@ const CardProduct = (props) => {
                     <button
                         style={{ color: Colors.Light, background: Colors.BlueLight }}
                         onClick={() => addToCart(product)} type="button" className="btn transition-3d-hover">
-                        <a href={"http://localhost:3000/detail/" + product.id} style={{ color: Colors.Light, textDecoration: "none" }}>
+                        <a href={"https://shopclonehimanshu.herokuapp.com/detail/" + product.id} style={{ color: Colors.Light, textDecoration: "none" }}>
                             <FaInfoCircle size={25}/> 
                             View Detail</a>
                     </button>

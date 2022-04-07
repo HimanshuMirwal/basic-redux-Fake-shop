@@ -59,8 +59,8 @@ const LoginPage = () => {
                     </Button>
                     </div>
                     <div className="row-cols-2 text-center d-flex ">
-                    <a href="http://localhost:3000/register">Signup Here</a>
-                    <a href="http://localhost:3000/forgot">Forgot Password</a>
+                    <a href="https://shopclonehimanshu.herokuapp.com/register">Signup Here</a>
+                    <a href="https://shopclonehimanshu.herokuapp.com/forgot">Forgot Password</a>
                     </div>
                     
                     </div>

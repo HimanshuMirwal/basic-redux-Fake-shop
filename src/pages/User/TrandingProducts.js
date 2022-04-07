@@ -27,14 +27,14 @@ const TrandingProducts = (props) => {
                         <div className="col-lg-3  col-sm-6 px-2 mb-0">
                         <div className="card product-card">
                             <a className="card-img-top d-block overflow-hidden" href="/">
-                            <div className="d-flex justify-items-center align-items-center">
+                            <div className="d-flex juystify-items-center align-items-center">
                             <img src={item.image} height="250px" width={"200px"} className="m-auto" alt="Product"/>
                             </div>
                             </a>
                             <div className="card-body py-2">
                             <a className=" d-block fs-xs pb-1" style={{color:Colors.Gray, textDecoration:"none", fontWeight:"bold"}} href="/">{item.category}</a>
                                 <div className="d-flex justify overflow-scroll"><h4 className="fs-sm">
-                                <a href={"http://localhost:3000/detail/"+item.id} style={{color:Colors.primary}}>{item.title.substr(0,15)}...</a>
+                                <a href={"https://shopclonehimanshu.herokuapp.com/detail/"+item.id} style={{color:Colors.primary}}>{item.title.substr(0,15)}...</a>
                                 </h4></div>
                                 <div className="d-flex justify-content-between">
                                     <div className="product-price">
@@ -54,7 +54,7 @@ const TrandingProducts = (props) => {
                                 >
                                 <FaCartPlus size={25}/>Add to Cart</button>}
                                 <div className="text-center">
-                                <a style={{color:Colors.Gray, textDecoration:"none"}} href={"http://localhost:3000/detail/"+item.id}>
+                                <a style={{color:Colors.Gray, textDecoration:"none"}} href={"https://shopclonehimanshu.herokuapp.com/detail/"+item.id}>
                                 <FaEye />View Detail</a></div>
                             </div>
                         </div>
