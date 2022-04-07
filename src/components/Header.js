@@ -11,34 +11,28 @@ const Header = () => {
   const { CartItems } = useSelector(state => state.CartReducer);
   const { user } = JSON.parse(localStorage.getItem("CurrentUser")) ? JSON.parse(localStorage.getItem("CurrentUser")) : "";
   const email = user ? user.email : "";
-  const displayName = user ? user.displayName : ""
   console.log(user)
-  if(user){
-    displayName?toast("Hii "+ displayName ):toast("Hii "+ email )
-  }
   return (
     <>
-      <ToastContainer/>
       <nav class="navbar navbar-expand-lg navbar-light  py-2 px-3 shadow-sm sticky-top"
         style={{ background: Colors.secondary }}>
         <div class="container-fluid">
           <a class="navbar-brand" href="/" style={{ color: Colors.primary, fontFamily: Font, fontWeight: "Bold" }}>
             <FaJediOrder size={50} />shopclone {email === AdminEmail ? " Admin" : ""}</a>
-        {!user && <>
+        
           <div className="d-flex justify-content-end align-items-end flex-direction-row">
-          <button className="btn mx-1 "
+          {!user && <button className="btn mx-1 "
             style={{ background: Colors.primary, color: Colors.secondary }}
             onClick={() => window.location.href = "/login"}
-          >SignIn</button>
-          <button className="btn mx-1"
+          >SignIn</button>}
+          {!user && <button className="btn mx-1"
             style={{ background: Colors.primary, color: Colors.secondary }}
             onClick={() => window.location.href = "/register"}
-          >SignUp</button>
+          >SignUp</button>}
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           </div>
-        </>}
           
           <div class="collapse navbar-collapse Header_Menu_div" id="navbarNavDropdown">
             <ul class="navbar-nav">
