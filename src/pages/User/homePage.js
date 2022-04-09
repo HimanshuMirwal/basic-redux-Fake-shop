@@ -84,7 +84,10 @@ const HomePage = () => {
                     <div className="row">
                         {
                             Products
-                                .filter(obj => obj.title.toLowerCase().includes(searchKey))
+                                .filter(obj => {
+                                    const newSearchToLower = searchKey.toLowerCase()
+                                    return obj.title.toLowerCase().includes(newSearchToLower)
+                                    })
                                 .filter(obj =>  {
                                             return FilterKey===""?obj.category.toLowerCase().includes(""):obj.category.toLowerCase()===FilterKey
                                         })

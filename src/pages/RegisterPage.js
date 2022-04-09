@@ -130,6 +130,7 @@ const RegisterPage = () => {
                                 style={{
                                     color: Colors.secondary,
                                     background: Colors.primary,
+                                    
                                     border: "0px",
                                     paddingLeft: "25px",
                                     paddingRight: "25px",
