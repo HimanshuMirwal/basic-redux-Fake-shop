@@ -4,7 +4,7 @@ import HomePage from "./pages/User/homePage";
 import Cart from "./pages/User/cartPage";
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
-import Detail from "./pages/User/productInfo";
+import ProductInfo from "./pages/User/productInfo";
 import Order from "./pages/User/Order";
 import AdminHome from "./pages/Admin/AdminHome";
 import Forgot from "./pages/Forgot";
@@ -17,7 +17,7 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/" exact ><DisplayFeatures/></Route>
                         <Route path="/:type/:name" ><HomePage/></Route>
-                        <Route path="/detail/:id"><Detail/></Route>
+                        <Route path="/detail/:id"><ProductInfo/></Route>
                         <Route path="/cart" ><ProtectedRoutes><Cart/></ProtectedRoutes></Route>
                         <Route path="/order"><ProtectedRoutes><Order/></ProtectedRoutes></Route>
                         <Route path="/admin"><ProtectedRoutes><AdminHome/></ProtectedRoutes></Route>

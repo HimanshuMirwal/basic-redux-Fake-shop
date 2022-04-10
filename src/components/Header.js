@@ -6,14 +6,15 @@ import { Colors, Font } from "../Colors";
 import ResetPass from "./ResetPass";
 import { AdminEmail } from "./Credentials";
 import { ToastContainer, toast } from 'react-toastify';
+import Searchbar from "./Searchbar";
 
 const Header = () => {
   const { CartItems } = useSelector(state => state.CartReducer);
   const { user } = JSON.parse(localStorage.getItem("CurrentUser")) ? JSON.parse(localStorage.getItem("CurrentUser")) : "";
   const email = user ? user.email : "";
-  console.log(user)
+  // console.log(user)
   return (
-    <>
+    <div className="overflow-hidden">
       <nav class="navbar navbar-expand-lg navbar-light  py-2 px-3 shadow-sm sticky-top"
         style={{ background: Colors.secondary }}>
         <div class="container-fluid">
@@ -75,8 +76,12 @@ const Header = () => {
         </div>
         
       </nav>
-      
-    </>
+      <div className="row" style={{background:Colors.secondary}}>
+                      <div className="col-lg-10 col-12 mx-auto my-4 ">
+                        <Searchbar />
+                      </div>
+      </div>
+    </div>
   )
 }
 
