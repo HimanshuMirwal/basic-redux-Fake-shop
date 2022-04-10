@@ -214,7 +214,7 @@ const DisplayFeatures = () => {
                     </div>
                     <div className="col-10 overflow-scroll">
                         {BrandData.map(item => {
-                            return <a href={`https://shopclonehimanshu.herokuapp.com/brand/${item.toLowerCase()}`}><div
+                            return <a href={`https://shopclonehimanshu.herokuapp.com/brand/${item}`}><div
                                 className="text-center rounded-pill m-2 p-2"
                                 style={{
                                     background: Colors.primary,
