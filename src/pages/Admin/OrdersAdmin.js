@@ -105,11 +105,9 @@ const OrdersAdmin = () => {
     return (
         <div className="row mx-n2 mx-sm-n3 my-5" style={{color:Colors.Black}}>
             <div className="col-lg-6 col-10 m-auto">
-
-            
             <div className="form-group my-1">
                 <input value={SearchKey} onChange={(e) => {
-                    setSearchKey(e.target.value);
+                    setSearchKey(e.target.value.toLowerCase());
                     setSearchName("");
                     setSearchId("");
 
@@ -118,7 +116,7 @@ const OrdersAdmin = () => {
             <div className="form-group my-1">
                 <input value={SearchName} onChange={(e) => {
                     setSearchKey("");
-                    setSearchName(e.target.value);
+                    setSearchName(e.target.value.toLowerCase());
                     setSearchId("");
                 }} type="text" className="form-control" placeholder="search by id" />
             </div>
@@ -126,7 +124,8 @@ const OrdersAdmin = () => {
                 <input value={SearchId} onChange={(e) => {
                     setSearchKey("");
                     setSearchName("");
-                    setSearchId(e.target.value);
+
+                    setSearchId(e.target.value.toLowerCase());
                 }} type="text" className="form-control" placeholder="search email" />
             </div>
 

@@ -86,7 +86,7 @@ const ProductInfo = () => {
                         <div className="col-lg-6 col-12 d-flex justify-content-center">
                             <img src={Product.image} style={{ height: "500px" }} className="img-fluid" alt={Product.title} />
                         </div>
-                        <div className="col-lg-6 col-12 text-bold">
+                        <div className="col-lg-6 col-10 mx-auto text-bold">
                             <Row>
                                 <h2 style={{ color: Colors.primary, fontFamily: Font }}>{Product.title}</h2>
                                 <hr />

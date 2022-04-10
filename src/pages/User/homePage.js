@@ -12,18 +12,17 @@ import { ToastContainer } from 'react-toastify';
 
 const HomePage = () => {
     const { category } = useParams();
-
+    const { type, name } = useParams();
+    console.log(type, name);
     const [Products, SetProducts] = useState([]);
     const { CartItems } = useSelector(state => state.CartReducer);
     const [searchKey, setSearchKey] = useState("");
     const [FilterKey, setFilterKey] = useState("");
-
-    const Dispatch = useDispatch();
     useEffect(() => {
         getData();
     }, [])
     const getData = async () => {
-        const data = (category === "all") ? await getDocs(collection(shopcloneDB, "shopclone")) : await getDocs(query(collection(shopcloneDB, "shopclone"), where("category", "==", category)));
+        const data = (type === "category" && name === "all") ? await getDocs(collection(shopcloneDB, "shopclone")) : await getDocs(query(collection(shopcloneDB, "shopclone"), where(type, "==", name)));
         const FinalProducts = [];
         console.log(data)
         data.forEach(product => {
@@ -66,8 +65,8 @@ const HomePage = () => {
                                 }} type="text" className="form-control" id="exampleInputPassword1" placeholder="search product" />
                             </div>
                         </div>
-                        {category === "all" && <div className="col-6">
-                            <div class="form-group">
+                        {name === "all" && <div className="col-6">
+                            <div className="form-group">
                                 <select value={FilterKey} onChange={(e) => {
                                     setFilterKey(e.target.value);
                                 }} id="" name="" className="form-control">

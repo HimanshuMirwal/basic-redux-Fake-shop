@@ -10,7 +10,7 @@ import TrandingProducts from "./TrandingProducts";
 import { FaArrowRight } from "react-icons/fa"
 import Layout from "../../components/Layout"
 import { ToastContainer } from 'react-toastify';
-import { CategoryData } from "../Category";
+import { CategoryData, Brands as BrandData } from "../Category";
 
 const DisplayFeatures = () => {
     const images = [
@@ -101,7 +101,7 @@ const DisplayFeatures = () => {
                                                 fontWeight: "bold",
                                                 fontSize: "30px"
                                             }}><a
-                                                href={`https://shopclonehimanshu.herokuapp.com/products/${data.title.toLowerCase()}`}
+                                                href={`https://shopclonehimanshu.herokuapp.com/category/${data.title.toLowerCase()}`}
                                                 style={{
                                                     textDecoration: "none",
                                                     color: Colors.primary,
@@ -148,7 +148,7 @@ const DisplayFeatures = () => {
                 </div>
                 <div className="text-center pt-3">
                     <a className="btn"
-                        href={"https://shopclonehimanshu.herokuapp.com/products/women's clothing"}
+                        href={"https://shopclonehimanshu.herokuapp.com/category/women's clothing"}
                         style={{ color: Colors.Light, background: Colors.primary, fontFamily: Font }}
                     >
                         More products <FaArrowRight size={25} /></a>
@@ -168,7 +168,7 @@ const DisplayFeatures = () => {
                     </div>
                     <div className="col-10 overflow-scroll">
                         {CategoryData.map(item => {
-                            return <a href={`https://shopclonehimanshu.herokuapp.com/products/${item.toLowerCase()}`}><div
+                            return <a href={`https://shopclonehimanshu.herokuapp.com/category/${item.toLowerCase()}`}><div
                                 className="text-center rounded-pill m-2 p-2"
                                 style={{
                                     background: Colors.primary,
@@ -203,11 +203,31 @@ const DisplayFeatures = () => {
                 </Row>
                 <div className="text-center pt-3">
                     <a className="btn"
-                        href={"https://shopclonehimanshu.herokuapp.com/products/men's clothing"}
+                        href={"https://shopclonehimanshu.herokuapp.com/category/men's clothing"}
                         style={{ color: Colors.Light, background: Colors.primary, fontFamily: Font }}
                     >
                         More products <FaArrowRight size={25} /></a>
                 </div>
+                <Row className="my-5 d-flex justify-content-center flex-direction-row" style={{ background: Colors.secondary }}>
+                    <div className="col-10 text-center">
+                        <h2 style={{ color: Colors.Gray, fontFamily: Font }}>Explore Our All Products by Brand</h2>
+                    </div>
+                    <div className="col-10 overflow-scroll">
+                        {BrandData.map(item => {
+                            return <a href={`https://shopclonehimanshu.herokuapp.com/brand/${item.toLowerCase()}`}><div
+                                className="text-center rounded-pill m-2 p-2"
+                                style={{
+                                    background: Colors.primary,
+                                    color: Colors.secondary,
+                                    width: "fit-content", float: "left"
+                                }}
+                            >
+                                {item}
+                            </div></a>
+                        })
+                        }
+                    </div>
+                </Row>
                 <section className="py-5 mt-5" style={{
                     background: Colors.third,
                     fontFamily: Font,
@@ -261,7 +281,7 @@ const DisplayFeatures = () => {
                                 <button
                                     style={{ background: Colors.primary, color: Colors.secondary }}
                                     className="btn"
-                                    onClick={() => window.location.href = "https://shopclonehimanshu.herokuapp.com/products/all"}
+                                    onClick={() => window.location.href = "https://shopclonehimanshu.herokuapp.com/category/all"}
                                 >
                                     See Our All Products
                                 </button>

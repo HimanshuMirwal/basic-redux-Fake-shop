@@ -10,7 +10,7 @@ import { Button, Modal, Tabs, Tab } from "react-bootstrap";
 import OrdersAdmin from "./OrdersAdmin";
 import RequestToCancel from "./RequestToCancel";
 import { Colors } from "../../Colors";
-import { CategoryData } from "../Category";
+import { CategoryData, Brands } from "../Category";
 const AdminHome = () => {
     const [show, setShow] = useState(false);
     const [key, setKey] = useState("Products")
@@ -20,6 +20,7 @@ const AdminHome = () => {
     const [ModalHeader, setModalHeader] = useState("");
     const handleShow = () => setShow(true)
     const [EditProduct, setEditProduct] = useState({
+        brand:"",
         id: "",
         description: "",
         category: "",
@@ -56,6 +57,7 @@ const AdminHome = () => {
     function EditInfo(product) {
         setModalHeader("Update Product")
         const modifiedProduct = {
+            brand:product.brand,
             id: product.id,
             description: product.description,
             category: product.category,
@@ -75,6 +77,7 @@ const AdminHome = () => {
             try {
                 const result = await setDoc(doc(shopcloneDB, "shopclone", EditProduct.id), EditProduct);
                 console.log("Success" + result);
+                getData();
             } catch (err) {
                 console.log("Err");
                 console.log(err);
@@ -83,6 +86,7 @@ const AdminHome = () => {
             alert("please fill the fields")
         }
         setEditProduct({
+            brand:"",
             id: "",
             description: "",
             category: "",
@@ -131,7 +135,8 @@ const AdminHome = () => {
             },
             image: "",
             price: 0,
-            title: ""
+            title: "",
+            brand:""
         })
     }
     if (currentuser.user.email !== "himanshumirwal@gmail.com") {
@@ -187,7 +192,10 @@ const AdminHome = () => {
                             </div>
                             {
                                 Products
-                                    .filter(obj => obj.title.toLowerCase().includes(searchKey))
+                                    .filter(obj => {
+                                        const NewDataToLowerCase = searchKey.toLowerCase()
+                                        return obj.title.toLowerCase().includes(NewDataToLowerCase)
+                                        })
                                     .filter(obj => {
                                             return FilterKey===""?obj.category.toLowerCase().includes(""):obj.category.toLowerCase()===FilterKey
                                         })
@@ -203,8 +211,11 @@ const AdminHome = () => {
                                                         <div className="col-2">
                                                             <h6>${product.price}</h6>
                                                         </div>
-                                                        <div className="col-4">
+                                                        <div className="col-3">
                                                             {product.category}
+                                                        </div>
+                                                        <div className="col-2">
+                                                            {product.brand}
                                                         </div>
                                                         <div
                                                             style={{
@@ -212,7 +223,7 @@ const AdminHome = () => {
                                                                 flexDirection: "row",
                                                                 justifyContent: "space-between"
                                                             }}
-                                                            className="col-4">
+                                                            className="col-3">
                                                             <button onClick={() => {
                                                                 DeleteProduct(product.id)
                                                             }} type="button" className="btn btn-danger ">
@@ -250,6 +261,20 @@ const AdminHome = () => {
                                                 })
                                             }}
                                         />
+                                        <label className="col-form-label-sm">Brand</label>
+                                        <select
+                                            onChange={(e) => {
+                                                setEditProduct({
+                                                    ...EditProduct,
+                                                    brand: e.target.value
+                                                })
+                                            }}
+                                            value={EditProduct.brand} className="form-control">
+                                            <option value="">Select brands</option>
+                                            {Brands.map(data=>{
+                                                return <option value={data}>{data}</option>
+                                            })}
+                                        </select>
                                         <label className="col-form-label-sm">price</label>
                                         <input type="text"
                                             className="form-control"
