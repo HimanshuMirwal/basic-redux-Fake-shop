@@ -26,16 +26,13 @@ const Searchbar = () => {
     }
     function onClickSearch() {
         const searchedQuery = document.getElementById("searchBarValue").value;
-
-const found = ProductsBrand.find(element => element==="abc");
+        const found = ProductsBrand.find(element => element===searchedQuery);
         const data = ProductsName.filter(data=>data.title === searchedQuery)
-        if(searchedQuery !== "" && data.id){
-            if (SearchType === "Product Name") {
-                // console.log(data[0].id)
-                window.location.href=`https://shopclonehimanshu.herokuapp.com/detail/${data[0].id}`
-            } else if(found){
-                window.location.href=`https://shopclonehimanshu.herokuapp.com/product/brand/${searchedQuery}`
-            }
+        if((searchedQuery !=="") && (data[0])&& (SearchType === "Product Name")){
+            alert("All condition are true")
+            window.location.href=`https://shopclonehimanshu.herokuapp.com/detail/${data[0].id}`
+        }else if((SearchType === "Product Brand") && (found)){
+            window.location.href=`https://shopclonehimanshu.herokuapp.com/product/brand/${searchedQuery}`
         }else{
            toast("Product  ot brand you are looking for is not available at this moment") 
         }

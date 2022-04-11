@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_CART } from "../../redux/Actions/Action";
 import CardProduct from "../../components/CardProduct";
 import { ToastContainer, toast } from 'react-toastify';
+import { Rating } from "@material-ui/lab";
 const ProductInfo = () => {
     const { id } = useParams();
     const { CartItems } = useSelector(state => state.CartReducer);
@@ -94,7 +95,7 @@ const ProductInfo = () => {
                                 <div className="col-6">
                                     <h5 className="text-bold" style={{ color: Colors.Gray, fontFamily: Font }} >Rating</h5>
                                     <p style={{ color: Colors.third, fontFamily: Font }}>
-                                        <FaStar size={25} color={"yellow"} /> {Product.rating.rate}</p>
+                                    <Rating name="half-rating-read" defaultValue={Product.rating.rate} precision={0.5} readOnly /> {Product.rating.rate}</p>
                                 </div>
                                 <div className="col-6">
                                     <h5 className="text-bold" style={{ color: Colors.Gray, fontFamily: Font }} >Price</h5>
