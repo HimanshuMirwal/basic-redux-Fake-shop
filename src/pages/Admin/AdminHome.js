@@ -146,7 +146,11 @@ const AdminHome = () => {
 
         <Layout>
             {Object.keys(Products).length === 0 ? (
-                <Loader />
+                <div className="row">
+                    <div className="col-12  text-center">
+                        <Loader />
+                    </div>
+                </div>
             ) : (
 
                 <div className="row my-5">

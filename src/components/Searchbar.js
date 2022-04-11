@@ -5,6 +5,7 @@ import shopCloneDB from "../FirebaseConfig";
 import { TextField, InputLabel, Select, MenuItem,FormControl,Button } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { Brands } from "../pages/Category";
+import { toast, ToastContainer } from "react-toastify";
 const Searchbar = () => {
     const [ProductsName, SetProductsName] = useState([]);
     const [SearchType, setSearchType] = useState("Product Name");
@@ -27,18 +28,21 @@ const Searchbar = () => {
     }
     function onClickSearch() {
         const searchedQuery = document.getElementById("searchBarValue").value;
-        if(searchedQuery !== ""){
+        const data = ProductsName.filter(data=>data.title === searchedQuery)
+        if(searchedQuery !== "" && data.id){
             if (SearchType === "Product Name") {
-                const data = ProductsName.filter(data=>data.title === searchedQuery)
                 // console.log(data[0].id)
                 window.location.href=`https://shopclonehimanshu.herokuapp.com/detail/${data[0].id}`
             } else {
                 window.location.href=`https://shopclonehimanshu.herokuapp.com/product/brand/${searchedQuery}`
             }
-        } 
+        }else{
+           toast("Product you are looking for is not available at this moment") 
+        }
     }
     return (
         <div className="d-flex w-100  flex-direction-row justify-content-center align-items-center">
+            <ToastContainer/>
             <div className="form-group mx-1 mb-4 w-lg-75 w-50">
                 <Autocomplete
                     freeSolo
@@ -80,7 +84,6 @@ const Searchbar = () => {
             <Button 
             onClick={()=>onClickSearch()}
             className="btn mx-auto w-auto" style={{ color: Colors.primary, border: `2px solid ${Colors.primary}` }} variant="outlined">Search</Button>
-            
             </div>
         </div>)
 }

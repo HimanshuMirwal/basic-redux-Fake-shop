@@ -58,14 +58,14 @@ const HomePage = () => {
                 <div className="m-5">
                 <ToastContainer/>
                     <div className="row my-2">
-                        <div className="col-6 mx-auto">
+                        {/* <div className="col-6 mx-auto">
                             <div className="form-group">
                                 <input value={searchKey} onChange={(e) => {
                                     setSearchKey(e.target.value);
                                 }} type="text" className="form-control" id="exampleInputPassword1" placeholder="search product" />
                             </div>
-                        </div>
-                        {name === "all" && <div className="col-6">
+                        </div> */}
+                        {name === "all" && <div className="col-lg-6 col-11 mx-auto">
                             <div className="form-group">
                                 <select value={FilterKey} onChange={(e) => {
                                     setFilterKey(e.target.value);

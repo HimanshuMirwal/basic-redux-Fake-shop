@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_CART } from "../../redux/Actions/Action";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Rating } from "@material-ui/lab";
 const TrandingProducts = (props) => {
     const {item}=props;
     const {CartItems}=useSelector(state=>state.CartReducer);
@@ -42,8 +43,7 @@ const TrandingProducts = (props) => {
                                     <div className="product-price">
                                     <span className="text-accent" style={{color:Colors.Gray}}>${item.price}.<small>00</small></span></div>
                                     <div className="star-rating" style={{color:Colors.Gray}}>
-                                        {item.rating.rate}
-                                        <FaStar color="yellow"/>
+                                        <Rating name="half-rating-read" defaultValue={item.rating.rate} precision={0.5} readOnly />
                                     </div>
                                 </div>
                             </div>
