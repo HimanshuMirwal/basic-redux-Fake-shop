@@ -166,7 +166,7 @@ const AdminHome = () => {
                                         </div>
                                     </div>
                                     <div className="col-4">
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <select value={FilterKey} onChange={(e) => {
                                                 setFilterKey(e.target.value);
                                             }} id="" name="" className="form-control">
@@ -181,7 +181,7 @@ const AdminHome = () => {
                                         </div>
                                     </div>
                                     <div className="col-lg-1 col-2">
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <button onClick={() => {
                                                 handleShow();
                                                 AddNewProduct();

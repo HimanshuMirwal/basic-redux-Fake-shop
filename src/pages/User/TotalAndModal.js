@@ -84,7 +84,7 @@ const TotalAndModal = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputEmail1" style={{ color: Colors.Gray }}>Name</label>
                             <input value={name} onChange={(e) => {
                                 setName(e.target.value)
@@ -93,9 +93,9 @@ const TotalAndModal = (props) => {
                                 }else{
                                     setNameValid(false)
                                 }
-                                }} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" />
+                                }} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputPassword1" style={{ color: Colors.Gray }}>Address</label>
                             <textarea value={address} onChange={(e) => {
                                 setAddress(e.target.value)
@@ -106,11 +106,11 @@ const TotalAndModal = (props) => {
                                     setAddressValid(false)
                                 }
                                 }}
-                                rows="5" cols="20" class="form-control" id="exampleInputPassword1"
+                                rows="5" cols="20" className="form-control" id="exampleInputPassword1"
                                 placeholder="enter address Hno. gali no 0-C Azad Nagar yamuna nagar">
                             </textarea>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputEmail1" style={{ color: Colors.Gray }}>pinCode</label>
                             <input value={pinCode} onChange={(e) => {
                                 setPinCode(e.target.value)
@@ -122,10 +122,10 @@ const TotalAndModal = (props) => {
                                 }
                                 }}
                                  type="number"
-                                class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                 placeholder="Enter area Pincode 135001" />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputPassword1" style={{ color: Colors.Gray }}>phoneNumber</label>
                             <input value={phoneNumber} onChange={(e) => {
                                 setPhoneNumber(e.target.value)
@@ -138,7 +138,7 @@ const TotalAndModal = (props) => {
                                 setPhoneNumberValid(false)
                             }
                                 }}
-                                type="number" class="form-control"
+                                type="number" className="form-control"
                                 id="exampleInputPassword1" placeholder="Enter Phone Number +91xxxxxxxxxx" />
                         {console.log("nameValid   phoneNumberValid   addressValid   pinCode ")}
                     {console.log(nameValid +" "+  phoneNumberValid +" "+ addressValid +" "+ pinCodeValid)}

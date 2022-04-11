@@ -8,10 +8,10 @@ const LocationTrack = (props) => {
             <strong style={{color:Colors.primary}}>Location tracker</strong>
             <div style={{overflowX:"scroll", color:Colors.Gray}}>
 
-                                    <ul class="list-group list-group-horizontal text-center">
+                                    <ul className="list-group list-group-horizontal text-center">
                                     {
                                         product.track.map((loc, idx)=>{
-                                            return  <li class="list-group-item text-success"><FaCheck size={25}/>{loc}</li>
+                                            return  <li className="list-group-item text-success"><FaCheck size={25}/>{loc}</li>
 
                                         })
                                     }

@@ -11,12 +11,13 @@ import { Colors, Font } from "../../Colors";
 import Loader from "../../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_CART } from "../../redux/Actions/Action";
+import CardProduct from "../../components/CardProduct";
 import { ToastContainer, toast } from 'react-toastify';
 const ProductInfo = () => {
     const { id } = useParams();
-    console.log("product info",id);
     const { CartItems } = useSelector(state => state.CartReducer);
     const { user } = JSON.parse(localStorage.getItem("CurrentUser")) ? JSON.parse(localStorage.getItem("CurrentUser")) : "";
+
     const [Product, SetProduct] = useState({});
     const Dispatch = useDispatch();
     const [suggestion, setSuggestion] = useState([]);
@@ -28,15 +29,13 @@ const ProductInfo = () => {
         localStorage.setItem("CartItems", JSON.stringify(CartItems));
     }, [CartItems]);
     const getData = async () => {
-        console.log("product info")
         try {
             // const data = await getDoc(doc(shopCloneDB, "shopclone"), id);
             // SetProduct(data);
             const docRef = doc(shopCloneDB, "shopclone", id);
             const docSnap = await getDoc(docRef);
-            console.log("product info ",docSnap);
             if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
+                // console.log("Document data:", docSnap.data());
                 SetProduct(docSnap.data());
                 const suggestionText = docSnap.data().category;
                 // For suggestions
@@ -74,15 +73,13 @@ const ProductInfo = () => {
     }
     return (
         <Layout>
-        <h1>this is detail</h1>
-            {/* 
-            Object.keys(Product).length === 0 ? (
+            {Object.keys(Product).length === 0 ? (
                 <div className="row">
                     <div className="col-12  text-center">
                         <Loader />
                     </div>
                 </div>
-            ) : ( 
+                ) : (
                 <div className="m-0 p-0">
                     <ToastContainer />
                     <div className="row m-lg-5 m-2 d-flex justify-content-between">
@@ -135,8 +132,8 @@ const ProductInfo = () => {
                             <div className="d-flex  col-11 m-auto px-2 flex-direction-row overflow-scroll align-items-center"
                                 style={{ background: Colors.secondary, borderTopRightRadius: "10px", borderTopLeftRadius: "10px" }}>
                                 {
-                                    suggestion.map(item => {
-                                        return <TrandingProducts item={item} />
+                                    suggestion.map((item, idx) => {
+                                        return <TrandingProducts key={idx} item={item} />
                                     })
                                 }
                             </div>
@@ -144,8 +141,8 @@ const ProductInfo = () => {
                     </div>
 
                 </div>
-            {/* ) */}
-
+            )}
+            
         </Layout>)
 }
 export default ProductInfo;

@@ -32,35 +32,36 @@ const ResetPass = () => {
         }).catch((error) => {
             console.log(error)
         });
-
     }
     return (
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel" style={{ color: Colors.primary }}>Reset password</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal fade" style={{zIndex:"+1"}} id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel" style={{ color: Colors.primary }}>Reset password</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
+                    <div className="modal-body">
+                        <div className="mb-3">
                             <h3 style={{ color: Colors.Gray }}>{email}</h3>
                             <button
                             onClick={() => {
                                 onResetPass()
                             }}
-                            class="btn" style={{ background: Colors.primary, color: Colors.secondary }}>
+                            className="btn" style={{ background: Colors.primary, color: Colors.secondary }}>
                             Reset Password</button>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" style={{ background: Colors.third, color: Colors.secondary }}>Close</button>
+                    <div className="modal-footer">
+                        <button 
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        type="button" className="btn btn-secondary" style={{ background: Colors.third, color: Colors.secondary }}>Close</button>
                        {email ===AdminEmail ?"":<button
                             onClick={() => {
                                 DeleteAccount()
                             }}
                             type="button"
-                            class="btn btn-danger" data-bs-dismiss="modal" >Delete Account</button>
+                            className="btn btn-danger" data-bs-dismiss="modal" >Delete Account</button>
                        }
                         
                     </div>

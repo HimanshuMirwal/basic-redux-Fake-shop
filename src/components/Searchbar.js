@@ -37,7 +37,7 @@ const Searchbar = () => {
     }
     return (
         <div className="d-flex w-100  flex-direction-row justify-content-center align-items-center">
-            <div class="form-group mx-1 mb-4 w-lg-75 w-50">
+            <div className="form-group mx-1 mb-4 w-lg-75 w-50">
                 <Autocomplete
                     freeSolo
                     autoComplete
@@ -77,7 +77,7 @@ const Searchbar = () => {
             <div className="form-group ms-1 w-auto">
             <Button 
             onClick={()=>onClickSearch()}
-            class="btn mx-auto w-auto" style={{ color: Colors.primary, border: `2px solid ${Colors.primary}` }} variant="outlined">Search</Button>
+            className="btn mx-auto w-auto" style={{ color: Colors.primary, border: `2px solid ${Colors.primary}` }} variant="outlined">Search</Button>
             
             </div>
         </div>)

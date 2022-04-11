@@ -55,7 +55,7 @@ const Forgot = () => {
                                 style={{ color: Colors.secondary, backgroundColor: Colors.primary, margin: "20px 0" }} 
                                 onClick={() => onClickSubmit()} 
                                 type="button" 
-                                class="btn btn-block">Reset</button>}
+                                className="btn btn-block">Reset</button>}
                                 <a href="/login" style={{ color: Colors.Gray }}>Login</a>
                             </div>
                         </div>

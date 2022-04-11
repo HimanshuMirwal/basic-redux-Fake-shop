@@ -106,7 +106,7 @@ const RegisterPage = () => {
                             }
                         </select>
                     </div> */}
-                    <div class="form-group my-2">
+                    <div className="form-group my-2">
                         <strong><label style={{ color: Colors.Gray }}>Password</label></strong>
                         <input value={Pass} onChange={(e) => {
                             setPass(e.target.value)

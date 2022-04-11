@@ -91,23 +91,23 @@ const DisplayFeatures = () => {
                     <Slider images={images.map(img => img.image)} />
                 </div>
                 <div className="col-10 mx-auto my-2">
-                    <div class="row">
+                    <div className="row">
                     {images.map((data, idx) => (
-                        <div class="col-lg-6 col-12 my-2" key={idx}>
-                            <div class="card">
-                                <img alt={idx} class="card-img-top img-thumbnail" src={data.image}/>
-                                <div class="card-body">
-                                    <h5 class="card-title"  style={{
+                        <div className="col-lg-6 col-12 my-2" key={idx}>
+                            <div className="card">
+                                <img alt={idx} className="card-img-top img-thumbnail" src={data.image}/>
+                                <div className="card-body">
+                                    <h5 className="card-title"  style={{
                                                 fontWeight: "bold",
                                                 fontSize: "30px"
                                             }}><a
-                                                href={`https://shopclonehimanshu.herokuapp.com/category/${data.title.toLowerCase()}`}
+                                                href={`https://shopclonehimanshu.herokuapp.com/product/category/${data.title.toLowerCase()}`}
                                                 style={{
                                                     textDecoration: "none",
                                                     color: Colors.primary,
                                                     fontFamily: Font
                                                 }}>{data.title}</a></h5>
-                                    <p class="card-text" style={{
+                                    <p className="card-text" style={{
                                             color: Colors.Gray,
                                             fontFamily: Font,
                                             fontSize: "15px"
@@ -148,7 +148,7 @@ const DisplayFeatures = () => {
                 </div>
                 <div className="text-center pt-3">
                     <a className="btn"
-                        href={"https://shopclonehimanshu.herokuapp.com/category/women's clothing"}
+                        href={"https://shopclonehimanshu.herokuapp.com/product/category/women's clothing"}
                         style={{ color: Colors.Light, background: Colors.primary, fontFamily: Font }}
                     >
                         More products <FaArrowRight size={25} /></a>
@@ -168,7 +168,7 @@ const DisplayFeatures = () => {
                     </div>
                     <div className="col-10 overflow-scroll">
                         {CategoryData.map(item => {
-                            return <a href={`https://shopclonehimanshu.herokuapp.com/category/${item.toLowerCase()}`}><div
+                            return <a href={`https://shopclonehimanshu.herokuapp.com/product/category/${item.toLowerCase()}`}><div
                                 className="text-center rounded-pill m-2 p-2"
                                 style={{
                                     background: Colors.primary,
@@ -203,7 +203,7 @@ const DisplayFeatures = () => {
                 </Row>
                 <div className="text-center pt-3">
                     <a className="btn"
-                        href={"https://shopclonehimanshu.herokuapp.com/category/men's clothing"}
+                        href={"https://shopclonehimanshu.herokuapp.com/product/category/men's clothing"}
                         style={{ color: Colors.Light, background: Colors.primary, fontFamily: Font }}
                     >
                         More products <FaArrowRight size={25} /></a>
@@ -214,7 +214,7 @@ const DisplayFeatures = () => {
                     </div>
                     <div className="col-10 overflow-scroll">
                         {BrandData.map(item => {
-                            return <a href={`https://shopclonehimanshu.herokuapp.com/brand/${item}`}><div
+                            return <a href={`https://shopclonehimanshu.herokuapp.com/product/brand/${item}`}><div
                                 className="text-center rounded-pill m-2 p-2"
                                 style={{
                                     background: Colors.primary,
@@ -281,7 +281,7 @@ const DisplayFeatures = () => {
                                 <button
                                     style={{ background: Colors.primary, color: Colors.secondary }}
                                     className="btn"
-                                    onClick={() => window.location.href = "https://shopclonehimanshu.herokuapp.com/category/all"}
+                                    onClick={() => window.location.href = "https://shopclonehimanshu.herokuapp.com/product/category/all"}
                                 >
                                     See Our All Products
                                 </button>

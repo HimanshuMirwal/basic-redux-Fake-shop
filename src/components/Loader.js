@@ -3,16 +3,16 @@ import React from "react";
 const Loader = () => {
     return (
         <div style={{
-            height: "1000px",
+            height: "1500px",
             width: "100%",
             lineHeight: "500px",
         }}>
-            <div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} variant="info" role="status">
+            <div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} variant="info" role="status">
             </div>
-            <div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} variant="info" role="status">
-            </div><div class="spinner-grow" style={{ width: "1rem", height: "1rem" }}  variant="info" role="status">
-            </div><div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} variant="info" role="status">
-            </div><div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} variant="info" role="status">
+            <div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} variant="info" role="status">
+            </div><div className="spinner-grow" style={{ width: "1rem", height: "1rem" }}  variant="info" role="status">
+            </div><div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} variant="info" role="status">
+            </div><div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} variant="info" role="status">
             </div>
         </div>
     )

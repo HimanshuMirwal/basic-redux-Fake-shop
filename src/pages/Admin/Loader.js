@@ -8,12 +8,12 @@ const Loader = () => {
             lineHeight: "500px",
             padding: "0 0 0 50%"
         }}>
-            <div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
+            <div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
             </div>
-            <div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
-            </div><div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
-            </div><div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
-            </div><div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
+            <div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
+            </div><div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
+            </div><div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
+            </div><div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
             </div>
         </div>
     )
