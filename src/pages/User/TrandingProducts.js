@@ -27,7 +27,7 @@ const TrandingProducts = (props) => {
     return (                    
                         <div className="col-lg-3 col-6 px-2 my-2 mx-lg-0 mx-auto">
                         <div className="card product-card">
-                            <a className="card-img-top d-block overflow-hidden" href={`https://shopclonehimanshu.herokuapp.com/detail/${item.id.toLowerCase()}`}>
+                            <a className="card-img-top d-block overflow-hidden" href={`https://shopclonehimanshu.herokuapp.com/detail/${item.id}`}>
                             <div className="d-flex juystify-items-center align-items-center">
                             <img src={item.image} height="300px" width={"250px"} className="m-auto" alt="Product"/>
                             </div>
