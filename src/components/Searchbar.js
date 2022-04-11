@@ -33,7 +33,7 @@ const Searchbar = () => {
                 // console.log(data[0].id)
                 window.location.href=`https://shopclonehimanshu.herokuapp.com/detail/${data[0].id}`
             } else {
-                window.location.href=`https://shopclonehimanshu.herokuapp.com/brand/${searchedQuery}`
+                window.location.href=`https://shopclonehimanshu.herokuapp.com/product/brand/${searchedQuery}`
             }
         } 
     }
