@@ -14,30 +14,30 @@ const Searchbar = () => {
     const getData = async () => {
         const data = await getDocs(collection(shopCloneDB, "shopclone"));
         const FinalProductsName = [];
-        const FinalProductsBrand = new Set();
         data.forEach(product => {
             const obj = {
                 id: product.id,
                 ...product.data()
             }
             FinalProductsName.push({ title: obj.title, id: obj.id });
-            FinalProductsBrand.add(obj.brand)
         })
         // console.log(FinalProductsBrand)
         SetProductsName(FinalProductsName);
     }
     function onClickSearch() {
         const searchedQuery = document.getElementById("searchBarValue").value;
+
+const found = ProductsBrand.find(element => element==="abc");
         const data = ProductsName.filter(data=>data.title === searchedQuery)
         if(searchedQuery !== "" && data.id){
             if (SearchType === "Product Name") {
                 // console.log(data[0].id)
                 window.location.href=`https://shopclonehimanshu.herokuapp.com/detail/${data[0].id}`
-            } else {
+            } else if(found){
                 window.location.href=`https://shopclonehimanshu.herokuapp.com/product/brand/${searchedQuery}`
             }
         }else{
-           toast("Product you are looking for is not available at this moment") 
+           toast("Product  ot brand you are looking for is not available at this moment") 
         }
     }
     return (
