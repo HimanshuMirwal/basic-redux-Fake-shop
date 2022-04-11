@@ -17,7 +17,8 @@ const Footer = () => {
               <ul className="widget-list" style={{listStyleType:"none", padding:0}}>
               {
                 CategoryData.map((items, idx) =>{
-                  return  <li key={idx} className="widget-list-item"><a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href={`https://shopclonehimanshu.herokuapp.com/products/${items.toLowerCase()}`}>{items}</a></li>
+                  return  <li key={idx} className="widget-list-item">
+                  <a className="widget-list-link" style={{color:Colors.secondary, textDecoration:"none"}} href={`https://shopclonehimanshu.herokuapp.com/product/category/${items.toLowerCase()}`}>{items}</a></li>
                 })
               }
               </ul>
