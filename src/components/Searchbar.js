@@ -29,7 +29,7 @@ const Searchbar = () => {
         const found = ProductsBrand.find(element => element===searchedQuery);
         const data = ProductsName.filter(data=>data.title === searchedQuery)
         if((searchedQuery !=="") && (data[0])&& (SearchType === "Product Name")){
-            alert("All condition are true")
+            // alert("All condition are true")
             window.location.href=`https://shopclonehimanshu.herokuapp.com/detail/${data[0].id}`
         }else if((SearchType === "Product Brand") && (found)){
             window.location.href=`https://shopclonehimanshu.herokuapp.com/product/brand/${searchedQuery}`
