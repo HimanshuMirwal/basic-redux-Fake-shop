@@ -33,7 +33,7 @@ const TrandingProducts = (props) => {
                             </div>
                             </a>
                             <div className="card-body py-2">
-                            <a className=" d-block fs-xs pb-1" style={{color:Colors.Gray, textDecoration:"none"}} href="/">{item.category}</a>
+                            <a className=" d-block fs-xs pb-1" style={{color:Colors.Gray, textDecoration:"none"}} href={`https://shopclonehimanshu.herokuapp.com/product/category/${item.category.toLowerCase()}`}>{item.category}</a>
 
                                 <div className="d-flex justify overflow-scroll"><h4 className="fs-sm">
                                 <a href={"https://shopclonehimanshu.herokuapp.com/detail/"+item.id} style={{color:Colors.primary}}>{item.title.substr(0,15)}...</a>
