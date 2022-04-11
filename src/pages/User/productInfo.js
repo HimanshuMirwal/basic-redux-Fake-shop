@@ -17,7 +17,7 @@ const ProductInfo = () => {
     const { id } = useParams();
     const { CartItems } = useSelector(state => state.CartReducer);
     const { user } = JSON.parse(localStorage.getItem("CurrentUser")) ? JSON.parse(localStorage.getItem("CurrentUser")) : "";
-
+    
     const [Product, SetProduct] = useState({});
     const Dispatch = useDispatch();
     const [suggestion, setSuggestion] = useState([]);

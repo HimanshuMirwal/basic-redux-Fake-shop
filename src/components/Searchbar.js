@@ -27,13 +27,15 @@ const Searchbar = () => {
     }
     function onClickSearch() {
         const searchedQuery = document.getElementById("searchBarValue").value;
-        if (SearchType === "Product Name") {
-            const data = ProductsName.filter(data=>data.title === searchedQuery)
-            // console.log(data[0].id)
-            window.location.href=`http://localhost:3000/detail/${data[0].id}`
-        } else {
-            window.location.href=`http://localhost:3000/brand/${searchedQuery}`
-        }
+        if(searchedQuery !== ""){
+            if (SearchType === "Product Name") {
+                const data = ProductsName.filter(data=>data.title === searchedQuery)
+                // console.log(data[0].id)
+                window.location.href=`https://shopclonehimanshu.herokuapp.com/detail/${data[0].id}`
+            } else {
+                window.location.href=`https://shopclonehimanshu.herokuapp.com/brand/${searchedQuery}`
+            }
+        } 
     }
     return (
         <div className="d-flex w-100  flex-direction-row justify-content-center align-items-center">
